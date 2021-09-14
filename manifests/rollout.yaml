@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   annotations:
-    getambassador.io/rolloutId: 05f9b19b-831a-4d90-abb9-5ffbb39887b1
+    getambassador.io/rolloutId: df40db5d-7416-4ac8-9b9f-69ed1601119c
   creationTimestamp: null
   name: rollout-demo
 spec:
@@ -15,21 +15,15 @@ spec:
       canaryService: rollout-demo-canary
       stableService: rollout-demo
       steps:
-      - setWeight: 20
+      - setWeight: 30
       - pause:
-          duration: 60
-      - setWeight: 40
-      - pause:
-          duration: 60
+          duration: 100
       - setWeight: 60
       - pause:
-          duration: 60
-      - setWeight: 80
+          duration: 100
+      - setWeight: 90
       - pause:
-          duration: 60
-      - setWeight: 100
-      - pause:
-          duration: 60
+          duration: 100
       trafficRouting:
         ambassador:
           mappings:
@@ -44,7 +38,7 @@ spec:
       - args:
         - -text=VERSION 1
         - -listen=:8080
-        image: hashicorp/http-echo:0.2.1
+        image: hashicorp/http-echo:0.2.0
         imagePullPolicy: Always
         name: echo-v1
         ports:
