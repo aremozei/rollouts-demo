@@ -1,0 +1,5 @@
+k8s_config:
+- manifest_path: /manifests
+  cluster_info:
+    cluster_id: 6e027c09-621c-5434-b894-382e32de1995
+    cluster_name: Fabios's cluster
